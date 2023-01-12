@@ -10509,7 +10509,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-icons@npm:^4.6.0":
+"react-icons@npm:^4.7.1":
   version: 4.7.1
   resolution: "react-icons@npm:4.7.1"
   peerDependencies:
@@ -11301,7 +11301,7 @@ __metadata:
     eslint-config-react-app: ^7.0.1
     react: ^18.2.0
     react-dom: ^18.2.0
-    react-icons: ^4.6.0
+    react-icons: ^4.7.1
     react-router-dom: ^6.4.3
     react-scripts: 5.0.1
     web-vitals: ^2.1.0
