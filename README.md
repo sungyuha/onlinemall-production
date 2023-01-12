@@ -9,6 +9,7 @@
 - 실행방법
     ```
     npm i
+    yarn install
     yarn start
     ```
    
