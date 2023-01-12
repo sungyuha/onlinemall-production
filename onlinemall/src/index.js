@@ -12,7 +12,9 @@ import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
+    // 최상위 경로
     path: '/',
+    // App이라는 부모 컴포넌트 안에 children을 사용
     element: <App />,
     errorElement: <NotFound />,
     children: [
