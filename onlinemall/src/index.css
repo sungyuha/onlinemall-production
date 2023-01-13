@@ -9,7 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply flex flex-col
+  @apply flex flex-col items-center;
 }
 
 /* header에 최대 너비 공간 설정  */
