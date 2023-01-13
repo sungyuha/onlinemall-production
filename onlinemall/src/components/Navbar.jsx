@@ -5,7 +5,7 @@ import { BsFillPencilFill } from 'react-icons/bs';
 
 export default function Navbar() {
   return (
-    <header>
+    <header className='flex justify-between'>
       <Link to='/'>
         <FiShoppingBag />
         <h1>Shoppy</h1>
