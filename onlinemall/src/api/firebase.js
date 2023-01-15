@@ -1,5 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { 
+    getAuth, 
+    signInWithPopup, 
+    GoogleAuthProvider,
+    signOut,
+    onAuthStateChanged,
+} from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -13,12 +19,25 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-export function login() {
-    signInWithPopup(auth, provider)
+export async function login() {
+    return signInWithPopup(auth, provider)
     .then((result) => {
     // 유저 정보 출력
     const user = result.user;
     console.log(user);
+    // 로그인한 사용하자가 있다면
+    return user;
     // 에러가 발생할 때
     }).catch(console.error);
+}
+
+export async function logout() {
+    return signOut(auth).then(() => null);
+}
+
+export function onUserStateChange(callback) {
+    onAuthStateChanged(auth, (user) => {
+        // 콜백함수를 전달 받음
+        callback(user);
+    });
 }
