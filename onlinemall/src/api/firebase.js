@@ -35,9 +35,10 @@ export async function logout() {
     return signOut(auth).then(() => null);
 }
 
+// 특정한 컴포넌트에서 사용자가 로그인 했을 때, 사용자의 정보가 변경 되었을 때
 export function onUserStateChange(callback) {
     onAuthStateChanged(auth, (user) => {
-        // 콜백함수를 전달 받음
+        //유저 정보가 변경 되는 이벤트가 발생 -> 콜백함수를 호출
         callback(user);
     });
 }
