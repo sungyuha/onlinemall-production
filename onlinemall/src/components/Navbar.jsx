@@ -30,6 +30,7 @@ export default function Navbar() {
   };
 
   return (
+    // className 는 tailwindcss 로 작성
     <header className='flex justify-between border-b border-gary-300 p-4'>
       <Link to='/' className='flex items-conter text-4xl text-brand'>
         <FiShoppingBag />
