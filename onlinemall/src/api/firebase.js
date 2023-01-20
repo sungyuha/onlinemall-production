@@ -40,5 +40,8 @@ export function onUserStateChange(callback) {
     onAuthStateChanged(auth, (user) => {
         //유저 정보가 변경 되는 이벤트가 발생 -> 콜백함수를 호출
         callback(user);
+
+        // 1. 사용자가 있는 경우에 (로그인한 경우)
+        console.log(user);
     });
 }
