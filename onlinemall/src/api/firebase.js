@@ -43,5 +43,7 @@ export function onUserStateChange(callback) {
 
         // 1. 사용자가 있는 경우에 (로그인한 경우)
         console.log(user);
+        // 2. 사용자가 어드민 권한을 가지고 있는지 확인
+        // 3. {...user, isAdmin: trun/false} -> 어드민이라면 : isAdmin
     });
 }
