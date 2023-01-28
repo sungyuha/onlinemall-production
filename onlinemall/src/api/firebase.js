@@ -38,12 +38,18 @@ export function logout() {
 // 특정한 컴포넌트에서 사용자가 로그인 했을 때, 사용자의 정보가 변경 되었을 때
 export function onUserStateChange(callback) {
     onAuthStateChanged(auth, (user) => {
-        //유저 정보가 변경 되는 이벤트가 발생 -> 콜백함수를 호출
-        callback(user);
-
         // 1. 사용자가 있는 경우에 (로그인한 경우)
+
+        //유저 정보가 변경 되는 이벤트가 발생 -> 콜백함수를 호출
         console.log(user);
-        // 2. 사용자가 어드민 권한을 가지고 있는지 확인
-        // 3. {...user, isAdmin: trun/false} -> 어드민이라면 : isAdmin
+        callback(user);
     });
+}
+
+// 어드민유저라는 함수를 만들어서 인자인 user를 전달 받음
+function adminUser(user) {
+    // 2. 사용자가 어드민 권한을 가지고 있는지 확인
+
+    // 3. {...user, isAdmin: trun/false} -> 어드민이라면 : isAdmin
+    
 }
