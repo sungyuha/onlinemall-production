@@ -21,7 +21,10 @@ export default function Navbar() {
     // })
 
     // 인자가 동일해서 참조값만 전달
-    onUserStateChange(setUser);
+    onUserStateChange(user => {
+      console.log(user);
+      setUser(user);
+    });
   }, []);
 
   // const handleLogin = () => {

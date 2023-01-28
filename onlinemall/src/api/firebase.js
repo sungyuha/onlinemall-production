@@ -42,12 +42,12 @@ export function logout() {
 
 // 특정한 컴포넌트에서 사용자가 로그인 했을 때, 사용자의 정보가 변경 되었을 때
 export function onUserStateChange(callback) {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
         // 1. 사용자가 있는 경우에 (로그인한 경우)
-        user && adminUser(user);
+        const updatedUser = user ? await adminUser(user) : null;
         //유저 정보가 변경 되는 이벤트가 발생 -> 콜백함수를 호출
-        console.log(user);
-        callback(user);
+        // console.log(user);
+        callback(updatedUser);
     });
 }
 
@@ -58,15 +58,17 @@ async function adminUser(user) {
 
     // 데이터는 초기화한 database와 admins를 가져옴
     // 여기서 데이터는 then로 전달 받고, 정상적으로 가져와진다면 snapshot으로 가져옴
-    return get(ref(database, 'admins')).then((snapshot) => {
+    return get(ref(database, 'admins')) //
+    .then((snapshot) => {
         // 만약에 snapshot이 존재 한다면 
         if(snapshot.exists()) {
             // snapshot의 val를 통해서 정보를 읽어옴
             const admins = snapshot.val();
-            console.log(admins);
+            // console.log(admins);
             const isAdmin = admins.include(user.uid);
             // 사용자에 있는 모든 정보를 낱개로 풀고, isAdmin이라는 정보도 전달
             return {...user, isAdmin}
         }
+        return user;
     });
 }
