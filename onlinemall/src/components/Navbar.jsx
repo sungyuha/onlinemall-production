@@ -56,7 +56,7 @@ export default function Navbar() {
         {/* 로그인 버튼이 클릭되면 */}
         {/* 사용자가 없다면 로그인 버튼을 보여주고 */}
         {!user && <button onClick={login}>Login</button>}
-        {/* 사용자가 있다묜 로그아웃 버튼 보여줌 */}
+        {/* 사용자가 있다면 로그아웃 버튼 보여줌 */}
         {user && <button onClick={logout}>Logout</button>}
       </nav>
     </header>
