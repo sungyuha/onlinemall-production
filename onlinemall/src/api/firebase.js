@@ -66,7 +66,7 @@ async function adminUser(user) {
             // snapshot의 val를 통해서 정보를 읽어옴
             const admins = snapshot.val();
             // console.log(admins);
-            const isAdmin = admins.include(user.uid);
+            const isAdmin = admins.includes(user.uid);
             // 사용자에 있는 모든 정보를 낱개로 풀고, isAdmin이라는 정보도 전달
             return {...user, isAdmin}
         }
