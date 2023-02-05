@@ -47,9 +47,12 @@ export default function Navbar() {
       <nav className='flex items-center gap-4 font-semiblod'>
         <Link to='/products'>Products</Link>
         <Link to='/carts'>Carts</Link>
-        <Link to='/products/new' className='text-2xl'>
+        {/* 어드민 사용자이면 편집 아이콘 보여지기 */}
+        {user && user.isAdmin && (
+          <Link to='/products/new' className='text-2xl'>
           <BsFillPencilFill />
         </Link>
+        )}
         {/* 사용자가 있다면 유저의 객체 정보를 전달 */}
         {user && <User user={user} />}
 
