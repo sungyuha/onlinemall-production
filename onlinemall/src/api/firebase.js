@@ -20,6 +20,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+// 구글 로그인 캐시 초기화
 provider.setCustomParameters({
     prompt: 'select_account',
 });
