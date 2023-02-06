@@ -4,6 +4,7 @@ import { FiShoppingBag } from 'react-icons/fi';
 import { BsFillPencilFill } from 'react-icons/bs';
 import { login,logout,onUserStateChange } from '../api/firebase';
 import User from './User';
+import Button from './UI/Button';
 
 export default function Navbar() {
   // 처음에는 사용자가 없으므로 아무것도 설정하지 않음 -> useState();
@@ -58,9 +59,11 @@ export default function Navbar() {
 
         {/* 로그인 버튼이 클릭되면 */}
         {/* 사용자가 없다면 로그인 버튼을 보여주고 */}
-        {!user && <button onClick={login}>Login</button>}
+        {/* {!user && <button onClick={login}>Login</button>} UI 컴포넌트 분리 전 */}
+        {!user && <Button text={'Login'} onClick={login}/>}
         {/* 사용자가 있다면 로그아웃 버튼 보여줌 */}
-        {user && <button onClick={logout}>Logout</button>}
+        {/* {user && <button onClick={logout}>Logout</button>} UI 컴포넌트 분리 전 */}
+        {user && <Button text={'Logout'} onClick={logout}/>}
       </nav>
     </header>
   );
