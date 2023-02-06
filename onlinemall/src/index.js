@@ -30,6 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/carts',
+        // 로그인 한 사용자면
         element: <MyCart />,
       },
     ],
