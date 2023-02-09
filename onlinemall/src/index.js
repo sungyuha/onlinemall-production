@@ -30,7 +30,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/carts',
-        // 로그인 한 사용자면
+        // 로그인 한 사용자면 장바구니 버튼 생성
+        //element: <MyCart />,
         element: <MyCart />,
       },
     ],
