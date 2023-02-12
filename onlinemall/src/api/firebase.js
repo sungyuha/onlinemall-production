@@ -38,6 +38,7 @@ export function login() {
     }).catch(console.error); */
 }
 
+// 로그아웃
 export function logout() {
     signOut(auth).catch(console.error);
 }
