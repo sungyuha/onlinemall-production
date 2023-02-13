@@ -1,42 +1,15 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiShoppingBag } from 'react-icons/fi';
 import { BsFillPencilFill } from 'react-icons/bs';
-import { login,logout,onUserStateChange } from '../api/firebase';
+// import { login,logout, } from '../api/firebase';
 import User from './User';
 import Button from './UI/Button';
+import { useAuthContext } from './context/AuthContext';
 
 export default function Navbar() {
-  // 처음에는 사용자가 없으므로 아무것도 설정하지 않음 -> useState();
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-    // firebase에 있는 콜백함수 호출
-    // 로그안한 사용자의 세션이 남아있으면 정상적인 유저의 객체가 전달 됨
-    /*onUserStateChange((user) => {
-      //user의 정보를 전달 받음
-      console.log(user);
-      // 유저의 객체가 남아있으면 우리의 컴포넌트에 상태를 업데이트
-      setUser(user);
-      //   // 로그아웃 하면 사용자 정보가 없어서 null 값이 전달 됨
-    })*/
-
-    // 인자가 동일해서 참조값만 전달
-    onUserStateChange(user => {
-      console.log(user);
-      setUser(user);
-    });
-  }, []);
-
-  /*const handleLogin = () => {
-    // firebase에 있는 로그인 함수 호출
-    login();
-  }; */
-
-  /* const handleLogout = () => {
-    // firebase에 있는 로그아웃 함수 호출
-    logout();
-  }; */
+  // 데이터를 가지고 옴
+  const {user, login, logout} = useAuthContext();
 
   return (
     // className 는 tailwindcss 로 작성
