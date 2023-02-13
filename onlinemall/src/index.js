@@ -9,6 +9,7 @@ import ProductDetail from './pages/ProductDetail';
 import NewProduct from './pages/NewProduct';
 import MyCart from './pages/MyCart';
 import NotFound from './pages/NotFound';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,13 @@ const router = createBrowserRouter([
       { path: '/products', element: <AllProducts /> },
       {
         path: '/products/new',
-        element: <NewProduct />,
+        element: (
+          // 어드민인 사용자가 접속할 때
+          // 사용자가 어드민이라면 접속, 아니라면  홈으로 리디렉딩
+          <ProtectedRoute requireAdmin>
+            <NewProduct />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/products/:id',
@@ -31,8 +38,11 @@ const router = createBrowserRouter([
       {
         path: '/carts',
         // 로그인 한 사용자면 장바구니 버튼 생성
-        //element: <MyCart />,
-        element: <MyCart />,
+        element: (
+          <ProtectedRoute>
+            <MyCart />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
