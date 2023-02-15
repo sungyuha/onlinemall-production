@@ -20,7 +20,8 @@ export default function Navbar() {
       </Link>
       <nav className='flex items-center gap-4 font-semiblod'>
         <Link to='/products'>Products</Link>
-        <Link to='/carts'>Carts</Link>
+        {/* 사용자가 있으면(=로그인 했을 때) 쇼핑카트 생성 */}
+        {user && <Link to='/carts'>Carts</Link> }
         {/* 어드민 사용자이면 편집 아이콘 보여지기 */}
         {user && user.isAdmin && (
           <Link to='/products/new' className='text-2xl'>
