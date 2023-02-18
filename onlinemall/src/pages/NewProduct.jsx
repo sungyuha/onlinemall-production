@@ -3,8 +3,12 @@ import React, {useSteate} from 'react';
 export default function NewProduct() {
 
   const [product, setProjduct] = useSteate({});
-  const handleSubmit = (e) => {};
-  const handleChange = (e) => {};
+  const handleSubmit = (e) => {
+
+  };
+  const handleChange = (e) => {
+    
+  };
 
   return (
     <section>
