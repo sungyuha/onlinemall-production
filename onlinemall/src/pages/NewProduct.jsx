@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { uploadImage } from '../api/uploader';
 
 export default function NewProduct() {
 
@@ -21,7 +22,16 @@ export default function NewProduct() {
   const handleChange = (e) => {
     e.preventDefault();
     // 1. 제품의 사진을 Cloudinary에 업로드 하고 URL 정보 
-    // 2. Firebase에 새로운 제품 데이터 저장(+추가)
+
+    // Submit이 되었을 때
+    // 선택한 파일을 먼저 업로드 한 다음에 
+    uploadImage(file)
+    // url 전달
+    .then(url => {
+      // 새로운 제품 등록
+      console.log(url);
+      // Firebase에 새로운 제품 데이터 저장(+추가)
+    })
   };
 
   return (
