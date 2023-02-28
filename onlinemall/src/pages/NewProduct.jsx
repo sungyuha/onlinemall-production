@@ -21,7 +21,6 @@ export default function NewProduct() {
   // onSubmit 버튼을 누르면
   const handleChange = (e) => {
     e.preventDefault();
-    // 1. 제품의 사진을 Cloudinary에 업로드 하고 URL 정보 
 
     // Submit이 되었을 때
     // 선택한 파일을 먼저 업로드 한 다음에 
@@ -31,6 +30,8 @@ export default function NewProduct() {
       // 새로운 제품 등록
       console.log(url);
       // Firebase에 새로운 제품 데이터 저장(+추가)
+
+      //제품의 사진을 Cloudinary에 업로드 하고 URL 정보
     })
   };
 
