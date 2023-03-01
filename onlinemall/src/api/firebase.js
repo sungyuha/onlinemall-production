@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { v4 as uuid } from 'uuid';
 import { 
     getAuth, 
     signInWithPopup, 
@@ -6,7 +7,7 @@ import {
     signOut,
     onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, get } from "firebase/database";
+import { getDatabase, ref, set, get } from "firebase/database";
 
 // firebase SDK -> 오류 사항 : firebase 버젼이 안맞아서 발생 => 현재는 오류 해결 완료
 const firebaseConfig = {
@@ -73,5 +74,22 @@ async function adminUser(user) {
             return {...user, isAdmin}
         }
         return user;
+    });
+}
+
+// 제품 등록
+export async function addNewProduct(product, imageUrl){ // async 붙여서 비동기로, product으로 제품의 정보 받아오고, imageUrl를 인자로 받아옴
+    // 고유한 아이디
+    const id = uuid();
+    // 제품 고유 번호. set 데이터 받음
+    set(ref(database, `products/${id}`), {
+        // 모든 키의 product 정보를 복사
+        ...product,
+        id,
+        // 문자열로 받아서 number로 저장해주기 위해. product의 price를 Int 형태로 변환 -> 그래야 숫자로 DB에 저장
+        price: parseInt(product.price),
+        image: imageUrl,
+        // 배열 형태로 저장
+        options: product.options.split(','),
     });
 }

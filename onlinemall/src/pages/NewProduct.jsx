@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { uploadImage } from '../api/uploader';
+import { addNewProduct } from '../api/firebase';
 
 export default function NewProduct() {
 
@@ -30,7 +31,8 @@ export default function NewProduct() {
       // 새로운 제품 등록
       console.log(url);
       // Firebase에 새로운 제품 데이터 저장(+추가)
-
+      addNewProduct(product, url); // addNewProduct 호출해줌
+      
       //제품의 사진을 Cloudinary에 업로드 하고 URL 정보
     })
   };
