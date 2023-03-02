@@ -82,7 +82,7 @@ export async function addNewProduct(product, imageUrl){ // async 붙여서 비�
     // 고유한 아이디
     const id = uuid();
     // 제품 고유 번호. set 데이터 받음
-    set(ref(database, `products/${id}`), {
+    return set(ref(database, `products/${id}`), {
         // 모든 키의 product 정보를 복사
         ...product,
         id,
