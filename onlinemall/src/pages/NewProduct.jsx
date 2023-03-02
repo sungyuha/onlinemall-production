@@ -1,12 +1,17 @@
 import React, {useState} from 'react';
 import { uploadImage } from '../api/uploader';
 import { addNewProduct } from '../api/firebase';
+import Button from '../components/UI/Button';
 
 export default function NewProduct() {
 
   const [product, setProjduct] = useState({});
   // image 상태값
   const [file, setFile] = useState();
+  // 업로드중인지 확인
+  const [isUploading, setISUploading] = useState(false);
+  // 업로드 업로드 성공했을 때 메시지 전송
+  const [success, setSuccess] = useState();
 
   const handleSubmit = (e) => {
     const {name, value, files} = e.target;
@@ -39,13 +44,18 @@ export default function NewProduct() {
 
   return (
     <section>
+      <h2>새로운 제품 등록</h2>
+      {/* 제품이 성공적으로 등록이 완료 되면 */}
+      {success && <p>✅ {success}</p>}
       {/* 파일이 있다면 선택 된 URL을 file에 전달 */}
       {file && <img src={URL.createObjectURL(file)} alt='파일' />}
       <form onSubmit={handleSubmit}>
         <h4>New Products</h4>
-        <input type='file' accept='image/*' name='file' required onChange={handleChange} />
+        <input type='file' accept='image/*' name='file' placeholder='제품명' required onChange={handleChange} />
         {/* title이 없다면 '' 텅 빈 문자열 */}
-        <input type='text' name='title' value={product.title ?? ''} placeholder='제품명' required onChange={handleChange} />
+        <input type='text' name='title' value={product.title ?? ''} placeholder='옵션들(콤마(,)로 구분)' required onChange={handleChange} />
+        {/* 업로드 중이면 버튼 비활섷롸(=disabled) */}
+        <Button text={isUploading ? '업로드중..' : '제품 등록하기'} disabled={isUploading} />
       </form>
     </section>
   );
