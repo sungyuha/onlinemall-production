@@ -43,10 +43,10 @@ export default function NewProduct() {
         // 성공한 결과 값 - 문구
         setSuccess('성공적으로 제품이 추가되었습니다.');
         setTimeout(() => {
-          // 일정시간이 지나면 setSuccess를 null 값으로
+          // 일정시간이 지나면 setSuccess를 null 값으로 초기회 - 4초
           setSuccess(null);
+        }, 4000);
         });
-      });
       
       //제품의 사진을 Cloudinary에 업로드 하고 URL 정보
     })
