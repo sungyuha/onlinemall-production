@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { uploadImage } from '../api/uploader';
 import { addNewProduct } from '../api/firebase';
 import Button from '../components/UI/Button';
+// import '../index.css';
 
 export default function NewProduct() {
 
@@ -55,17 +56,17 @@ export default function NewProduct() {
   };
 
   return (
-    <section>
-      <h2>새로운 제품 등록</h2>
+    <section className='w-full text-center'>
+      <h2 className='text-2xl font-bold my-4'>새로운 제품 등록</h2>
       {/* 제품이 성공적으로 등록이 완료 되면 */}
-      {success && <p>✅ {success}</p>}
+      {success && <p className='my-2'>✅ {success}</p>}
       {/* 파일이 있다면 선택 된 URL을 file에 전달 */}
-      {file && <img src={URL.createObjectURL(file)} alt='파일' />}
-      <form onSubmit={handleSubmit}>
+      {file && <img className='w-96 mx-auto mb-2' src={URL.createObjectURL(file)} alt='파일' />}
+      <form className='flex flex-col px-12' onSubmit={handleSubmit}>
         <h4>New Products</h4>
-        <input type='file' accept='image/*' name='file' placeholder='제품명' required onChange={handleChange} />
+        <input className='p-4 online-none border border-gray-300 my-1' type='file' accept='image/*' name='file' placeholder='제품명' required onChange={handleChange} />
         {/* title이 없다면 '' 텅 빈 문자열 */}
-        <input type='text' name='title' value={product.title ?? ''} placeholder='옵션들(콤마(,)로 구분)' required onChange={handleChange} />
+        <input className='p-4 online-none border border-gray-300 my-1' type='text' name='title' value={product.title ?? ''} placeholder='옵션들(콤마(,)로 구분)' required onChange={handleChange} />
         {/* 업로드 중이면 버튼 비활섷롸(=disabled) */}
         <Button text={isUploading ? '업로드중..' : '제품 등록하기'} disabled={isUploading} />
       </form>
