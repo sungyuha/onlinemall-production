@@ -93,3 +93,8 @@ export async function addNewProduct(product, imageUrl){ // async 붙여서 비�
         options: product.options.split(','),
     });
 }
+
+// 상품 불러오기
+export async function getProducts() {
+    
+}
