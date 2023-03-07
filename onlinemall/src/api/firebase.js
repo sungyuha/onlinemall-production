@@ -96,5 +96,8 @@ export async function addNewProduct(product, imageUrl){ // async 붙여서 비�
 
 // 상품 불러오기
 export async function getProducts() {
-    
+    return get(ref(database, 'products'))
+    .then(snapshot => {
+        
+    })
 }
