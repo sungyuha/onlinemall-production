@@ -98,6 +98,9 @@ export async function addNewProduct(product, imageUrl){ // async 붙여서 비�
 export async function getProducts() {
     return get(ref(database, 'products'))
     .then(snapshot => {
-        
+        // 만약에 snapshot이 존재한다면
+        if(snapshot.exists()){
+            return Object.values(snapshot.val());
+        }
     })
 }
