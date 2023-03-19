@@ -100,7 +100,10 @@ export async function getProducts() {
     .then(snapshot => {
         // 만약에 snapshot이 존재한다면
         if(snapshot.exists()){
+            // 자바스크립트의 Object.values를 이용해서 snapshot이 가지고 있는 객체 불어옴 ex) 제품의 정보, id키 값
             return Object.values(snapshot.val());
         }
+        // snapshot이 없다면 빈 배열을 리턴해줌
+        return [];
     })
 }
