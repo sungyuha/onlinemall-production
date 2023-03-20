@@ -105,5 +105,6 @@ export async function getProducts() {
         }
         // snapshot이 없다면 빈 배열을 리턴해줌
         return [];
-    })
+    });
 }
+
