@@ -1,6 +1,7 @@
 import React from 'react';
 import {useQuery} from '@tanstack/react-query';
 import { getProducts } from '../api/firebase';
+import ProductCard from './ProductCard';
 
 export default function Products() {
     const {
@@ -16,5 +17,11 @@ export default function Products() {
         {isLoading && <p>Loading...</p>}
         {/* 에러가 발생하면 */}
         {error && <p>{error}</p>}
+        <ul>
+            {/* products이 있다면 products 컴포넌트로 map으로 ProductCard에 전달 */} {/* 고유의 key 값은 products.id */}
+            {products && products.map(product => (
+                <ProductCard key={products.id} product={product} />
+            ))}
+        </ul>
     </>;
 }
