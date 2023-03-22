@@ -18,8 +18,8 @@ export default function Products() {
         {/* 에러가 발생하면 */}
         {error && <p>{error}</p>}
         <ul>
-            {/* products이 있다면 products 컴포넌트로 map으로 ProductCard에 전달 */} {/* 고유의 key 값은 products.id */}
-            {products && products.map(product => (
+            {/* products이 있다면 products 컴포넌트로 map으로 ProductCard에 전달 */} 
+            {products && products.map(product => ( /* 고유의 key 값은 products.id */
                 <ProductCard key={products.id} product={product} />
             ))}
         </ul>
