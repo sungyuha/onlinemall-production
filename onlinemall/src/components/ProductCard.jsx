@@ -7,6 +7,7 @@ export default function ProductCard({
     return <li>
         {/* 이미지 */}
         <img src={image} alt={title} />
+        {/* 메타 데이터 정보 */}
         <div>
             {/* 제목 */}
             <h3>{title}</h3>
