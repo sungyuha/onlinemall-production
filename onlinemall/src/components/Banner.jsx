@@ -6,7 +6,7 @@ export default function Banner() {
         <div className='absolute w-full top-32 text-center text-gray-100'>
             <h2>shoppy 상품</h2>
             <p>베스트 상품</p>
-            
+            <p>상품 가격</p>
         </div>
     </section>;
 }
