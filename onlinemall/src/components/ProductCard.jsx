@@ -6,7 +6,7 @@ export default function ProductCard({
     product: {id, image, title, category, price}, // product을 낱개로 풀어서 가져올 수 있음
 }) {
     return (
-        <li className='rounded-lg shadow-md overflow-hidden cursor-pointer'>
+        <li className='rounded-lg shadow-md overflow-hidden cursor-pointer transition-all hover:scale-100'>
             {/* 이미지 */}
             <img className='w-full' src={image} alt={title} />
             {/* 메타 데이터 정보 */}
