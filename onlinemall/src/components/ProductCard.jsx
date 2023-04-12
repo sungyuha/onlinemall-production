@@ -14,7 +14,7 @@ export default function ProductCard({
                 {/* 제목 */}
                 <h3 className='truncate'>{title}</h3>
                 {/* 한국 원화 표시가 된 가격 */}
-                <p className='mb-2 px-2 text-gray-600'>{`₩price`}</p> 
+                <p className='mb-2 px-2 text-gray-600'>{`₩${price}`}</p> 
             </div>
         </li>
     )
