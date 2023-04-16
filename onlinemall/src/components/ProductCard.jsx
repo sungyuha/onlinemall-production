@@ -1,12 +1,17 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 
 // product을 props으로 받아옴
 export default function ProductCard({
     // 가져오는 값은 id, 이미지, 제목, 카테고리, 가격
     product: {id, image, title, category, price}, // product을 낱개로 풀어서 가져올 수 있음
 }) {
+    const naviate = useNavigate();
     return (
-        <li className='rounded-lg shadow-md overflow-hidden cursor-pointer transition-all hover:scale-105'>
+        <li onClick={() => {
+            // naviate함수를 이용해서 원하는 경로를 지정 - 제품 페이지로
+            naviate(`/products/${id}`)
+        }} className='rounded-lg shadow-md overflow-hidden cursor-pointer transition-all hover:scale-105'>
             {/* 이미지 */}
             <img className='w-full' src={image} alt={title} />
             {/* 메타 데이터 정보 */}
