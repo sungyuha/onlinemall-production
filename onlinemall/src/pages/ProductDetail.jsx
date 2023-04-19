@@ -9,6 +9,10 @@ export default function ProductDetail() {
     }
   } = useLocation(); // useLocation를 통해서 받아올 수 있음
   return (
-    <div>Product Details</div>
+    // <div>Product Details</div>
+    <section>
+      <p>{categroy}</p>
+      <img src={image} alt={title} />
+    </section>
   )
 }
