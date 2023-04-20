@@ -12,7 +12,17 @@ export default function ProductDetail() {
     // <div>Product Details</div>
     <section>
       <p>{categroy}</p>
+      {/* 상품 이미지 */}
       <img src={image} alt={title} />
+      <div>
+        {/* 상품 제목.타이틀 */}
+        <h2>{title}</h2>
+        {/* 상품 가격 */}
+        <p>₩{price}</p>
+        <p>{description}</p>
+        <p>옵션:</p>
+        <select />
+      </div>
     </section>
   )
 }
