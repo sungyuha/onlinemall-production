@@ -1,13 +1,20 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useLocation } from 'react-router-dom';
 
 export default function ProductDetail() {
+  // 옵션이 있다면 제일 첫 번째 값을 선택
+  const [selected, setSelected] = useState(options && options[0]);
   const {
     // 전달 받은 state를 react-router-dom에서 product으로 낱개로 풀어서 가져옴
     state: {
       product: {id, image, title, description, categroy, price, options}
     }
   } = useLocation(); // useLocation를 통해서 받아올 수 있음
+
+  const handleSelected = (e) => {
+    setSelected(e.target.value);
+  }
+
   return (
     // <div>Product Details</div>
     <section>
@@ -21,7 +28,9 @@ export default function ProductDetail() {
         <p>₩{price}</p>
         <p>{description}</p>
         <p>옵션:</p>
-        <select />
+        <select onChange={handleSelected} value={selected}>
+          {/* 옵션이 있다면 사용자가 마음대로 선택 가능하게. 배열로 받아서 선택가능하게 */}
+        </select>
       </div>
     </section>
   )
