@@ -30,6 +30,10 @@ export default function ProductDetail() {
         <p>옵션:</p>
         <select onChange={handleSelected} value={selected}>
           {/* 옵션이 있다면 사용자가 마음대로 선택 가능하게. 배열로 받아서 선택가능하게 */}
+          {options && options.map((option, index) => (
+            // 옵션의 경우에는 예외적으로 배열에 index 사용 가능
+              <option key={index}></option> 
+            ))}
         </select>
       </div>
     </section>
