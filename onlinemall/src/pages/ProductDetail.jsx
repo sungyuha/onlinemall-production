@@ -23,27 +23,29 @@ export default function ProductDetail() {
 
   return (
     // <div>Product Details</div>
-    <section>
-      <p>{categroy}</p>
-      {/* 상품 이미지 */}
-      <img src={image} alt={title} />
-      <div>
-        {/* 상품 제목.타이틀 */}
-        <h2>{title}</h2>
-        {/* 상품 가격 */}
-        <p>₩{price}</p>
-        <p>{description}</p>
-        <p>옵션:</p>
-        <select onChange={handleSelected} value={selected}>
-          {/* 옵션이 있다면 사용자가 마음대로 선택 가능하게. 배열로 받아서 선택가능하게 */}
-          {options && options.map((option, index) => (
-              // 옵션의 경우에는 변경사항이 없는 예외적으로 배열에 index 사용 가능
-              <option key={index}>{option}</option>
-            ))}
-        </select>
-        {/* 장바구나 추가 버튼 */}
-        <Button text="장바구니에 추가" onClick={handleClick} />
-      </div>
-    </section>
+    <>
+      <p className='mx-12 mt-4 text-gray-750'>{categroy}</p>
+      <section className='flex flex-col md:flex-row p-4'> {/* 미디엄 사이즈 부터는 컬럼으로 일렬로 조회*/}
+        {/* 상품 이미지 */}
+        <img className='w-full' src={image} alt={title} />
+        <div>
+          {/* 상품 제목.타이틀 */}
+          <h2>{title}</h2>
+          {/* 상품 가격 */}
+          <p>₩{price}</p>
+          <p>{description}</p>
+          <p>옵션:</p>
+          <select onChange={handleSelected} value={selected}>
+            {/* 옵션이 있다면 사용자가 마음대로 선택 가능하게. 배열로 받아서 선택가능하게 */}
+            {options && options.map((option, index) => (
+                // 옵션의 경우에는 변경사항이 없는 예외적으로 배열에 index 사용 가능
+                <option key={index}>{option}</option>
+              ))}
+          </select>
+          {/* 장바구나 추가 버튼 */}
+          <Button text="장바구니에 추가" onClick={handleClick} />
+        </div>
+      </section>
+    </>
   )
 }
