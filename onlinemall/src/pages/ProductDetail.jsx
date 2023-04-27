@@ -27,13 +27,14 @@ export default function ProductDetail() {
       <p className='mx-12 mt-4 text-gray-750'>{categroy}</p>
       <section className='flex flex-col md:flex-row p-4'> {/* 미디엄 사이즈 부터는 컬럼으로 일렬로 조회*/}
         {/* 상품 이미지 */}
-        <img className='w-full' src={image} alt={title} />
-        <div>
+        <img className='w-full px-4 basis-7/12' src={image} alt={title} /> {/* 일렬로 들어왔을 때 basis를 7/12 */}
+        {/* 텍스트가 있는 태그 */}
+        <div className='w-full basis-5/12 flex-col p-4'>
           {/* 상품 제목.타이틀 */}
-          <h2>{title}</h2>
+          <h2 className='text-3xl font-blod py-2'>{title}</h2>
           {/* 상품 가격 */}
-          <p>₩{price}</p>
-          <p>{description}</p>
+          <p className='text-2xl font-blod py-2 border-b border-gary-450'>₩{price}</p>
+          <p className='py-4 text-lg'>{description}</p>
           <p>옵션:</p>
           <select onChange={handleSelected} value={selected}>
             {/* 옵션이 있다면 사용자가 마음대로 선택 가능하게. 배열로 받아서 선택가능하게 */}
