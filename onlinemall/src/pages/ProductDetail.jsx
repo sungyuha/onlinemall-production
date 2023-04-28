@@ -35,14 +35,17 @@ export default function ProductDetail() {
           {/* 상품 가격 */}
           <p className='text-2xl font-blod py-2 border-b border-gary-450'>₩{price}</p>
           <p className='py-4 text-lg'>{description}</p>
-          <p>옵션:</p>
-          <select onChange={handleSelected} value={selected}>
-            {/* 옵션이 있다면 사용자가 마음대로 선택 가능하게. 배열로 받아서 선택가능하게 */}
-            {options && options.map((option, index) => (
-                // 옵션의 경우에는 변경사항이 없는 예외적으로 배열에 index 사용 가능
-                <option key={index}>{option}</option>
-              ))}
-          </select>
+          <div className='flex items-center'>
+            <label className='text-brand font-blod' htmlFor='select'>옵션:</label>
+            <select id='select' className='p-2 m-4 flex-1 border-2 border-dashed border-brand outlin-none' // 선택했을 때 아웃라인이 없게
+            onChange={handleSelected} value={selected}>
+              {/* 옵션이 있다면 사용자가 마음대로 선택 가능하게. 배열로 받아서 선택가능하게 */}
+              {options && options.map((option, index) => (
+                  // 옵션의 경우에는 변경사항이 없는 예외적으로 배열에 index 사용 가능
+                  <option key={index}>{option}</option>
+                ))}
+            </select>
+          </div>
           {/* 장바구나 추가 버튼 */}
           <Button text="장바구니에 추가" onClick={handleClick} />
         </div>
