@@ -108,3 +108,7 @@ export async function getProducts() {
     });
 }
 
+// 사용자에 대한 카트(장바구니)
+export async function getCart(userId) {
+    return get(ref(database, ))
+}
