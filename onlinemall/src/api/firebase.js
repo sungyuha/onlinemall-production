@@ -109,7 +109,15 @@ export async function getProducts() {
 }
 
 // 사용자에 대한 카트(장바구니)
-export async function getCart(userId, product) {
+export async function getCart(userId) {
     // carts안에 사용자의 아이디 == userId
-    return get(ref(database, `carts/${userId}/${product.id}`), product);
+    return get(ref(database, `carts/${userId}`))
+    .then(() => {
+        
+    });
+}
+
+export async function addOrUpdateToCart(userId, product) {
+    // carts안에 사용자의 아이디 == userId
+    return set(ref(database, `carts/${userId}/${product.id}`), product);
 }
