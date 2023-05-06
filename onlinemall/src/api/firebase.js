@@ -110,10 +110,12 @@ export async function getProducts() {
 
 // 사용자에 대한 카트(장바구니)
 export async function getCart(userId) {
-    // carts안에 사용자의 아이디 == userId
+    // carts안에 사용자의 아이디 == userId를 가져옴
     return get(ref(database, `carts/${userId}`))
-    .then(() => {
-        
+    .then((snapshot) => {
+        // 데이터 읽어옴. 만약에 없다면 텅 빈 오브젝트 사용
+        const items = snapshot.val() || {};
+        return Object.values(items);
     });
 }
 
