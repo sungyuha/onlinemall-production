@@ -7,7 +7,7 @@ import {
     signOut,
     onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, set, get } from "firebase/database";
+import { getDatabase, ref, set, get, remove } from "firebase/database";
 
 // firebase SDK -> 오류 사항 : firebase 버젼이 안맞아서 발생 => 현재는 오류 해결 완료
 const firebaseConfig = {
@@ -119,7 +119,13 @@ export async function getCart(userId) {
     });
 }
 
-export async function addOrUpdateToCart(userId, product) {
+// 장바구니에 추가 & 변경할 때
+export async function addOrUpdateToCart(userId, product) { // product에는 제품의 가격 & 카트에 추가하는 수량 정보가 들어있음
     // carts안에 사용자의 아이디 == userId
     return set(ref(database, `carts/${userId}/${product.id}`), product);
+}
+
+// 카드에 담긴 정보 삭제
+export async function removeFromCart(userId, productId) {
+    return remove()
 }
