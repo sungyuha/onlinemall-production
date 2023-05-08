@@ -127,5 +127,5 @@ export async function addOrUpdateToCart(userId, product) { // product에는 제�
 
 // 카드에 담긴 정보 삭제
 export async function removeFromCart(userId, productId) {
-    return remove()
+    return remove(ref(database, `carts/${userId}/${productId}`));
 }
