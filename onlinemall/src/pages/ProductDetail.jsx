@@ -1,8 +1,11 @@
 import React,{useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../components/UI/Button';
+import {useAuthContext} from '../components/context/AuthContext';
 
 export default function ProductDetail() {
+  // 사용자
+  const {user} = useAuthContext();
   const {
     // 전달 받은 state를 react-router-dom에서 product으로 낱개로 풀어서 가져옴
     state: {
