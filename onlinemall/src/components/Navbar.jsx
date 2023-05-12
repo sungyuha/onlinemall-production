@@ -5,7 +5,7 @@ import { BsFillPencilFill } from 'react-icons/bs';
 // import { login,logout, } from '../api/firebase';
 import User from './User';
 import Button from './UI/Button';
-import { useAuthContext } from './context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function Navbar() {
   // 데이터를 가지고 옴
