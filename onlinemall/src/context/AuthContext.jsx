@@ -36,11 +36,16 @@ export function AuthContextProvider({children}) {
         logout();
     }; */
 
-    // 자식 컴포넌트에 접근 가능한 user // 모든 자식 컨포넌트에는 사용자(user)의 정보와 login, logout 함수까지 접근 가능
-    return <AuthContext.Provider value={{user, login, logout}}> {/* firebase 참조값인 login & logout 연결, 함수 생략 가능 */}
-        {/* children 를 받아옴 */}
-        {children}
-    </AuthContext.Provider>
+    return (
+        <AuthContext.Provider
+        // 자식 컴포넌트에 접근 가능한 user // 모든 자식 컨포넌트에는 사용자(user)의 정보와 login, logout 함수까지 접근 가능
+            // user가 있다면 user의 uid도 함께 낱개로 풀어서 가져옴
+            value={{user, uid: user && user.uid, login, logout}} /* firebase 참조값인 login & logout 연결, 함수 생략 가능 */
+        >
+            {/* children 를 받아옴 */}
+            {children}
+        </AuthContext.Provider>
+    );
 }
 
 export function useAuthContext() {
