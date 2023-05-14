@@ -6,6 +6,7 @@ import { BsFillPencilFill } from 'react-icons/bs';
 import User from './User';
 import Button from './UI/Button';
 import { useAuthContext } from '../context/AuthContext';
+import CartStatus from './CartStatus';
 
 export default function Navbar() {
   // 데이터를 가지고 옴
@@ -21,7 +22,7 @@ export default function Navbar() {
       <nav className='flex items-center gap-4 font-semiblod'>
         <Link to='/products'>Products</Link>
         {/* 사용자가 있으면(=로그인 했을 때) 쇼핑카트 생성 */}
-        {user && <Link to='/carts'>Carts</Link> }
+        {user && <Link to='/carts'>Carts<CartStatus/></Link> }
         {/* 어드민 사용자이면 편집 아이콘 보여지기 */}
         {user && user.isAdmin && (
           <Link to='/products/new' className='text-2xl'>
