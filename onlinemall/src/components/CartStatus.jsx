@@ -1,16 +1,21 @@
 import React from "react";
-import { AiOutlineShoppingCart} from 'react-icons/ai';
+import {AiOutlineShoppingCart} from 'react-icons/ai';
 import {getCart} from '../api/firebase';
 import {useQuery} from '@tanstack/react-query';
+import {useAuthContext} from '../context/AuthContext';
 
 export default function CartStatus() {
-    // useQuery 의 키는 carts, 함수는 getCart
-    const {data: produtes} = useQuery(['carts'], getCart);
+    // 사용자안에 있는 uid
+    const {uid} = useAuthContext();
+
+    // useQuery 의 키는 carts, 함수는 getCart에 uid 전달
+    const {data: produtes} = useQuery(['carts'], () => getCart(uid)); 
     return (
         <div>
             {/* 카트 아이콘 */}
             <AiOutlineShoppingCart/>
+            {/* produtes이 있다면 p태그 안에 produtes.length가 출력 됨 */}
+            {produtes && <p>{produtes.length}</p>}
         </div>
     )
-    
 }
