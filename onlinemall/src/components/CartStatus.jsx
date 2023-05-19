@@ -9,13 +9,17 @@ export default function CartStatus() {
     const {uid} = useAuthContext();
 
     // useQuery 의 키는 carts, 함수는 getCart에 uid 전달
-    const {data: produtes} = useQuery(['carts'], () => getCart(uid)); 
+    const {data: produtes} = useQuery(['carts'], () => getCart(uid));
     return (
-        <div>
+        <div className='relative'>
             {/* 카트 아이콘 */}
-            <AiOutlineShoppingCart/>
+            <AiOutlineShoppingCart className='text-4xl'/>
             {/* produtes이 있다면 p태그 안에 produtes.length가 출력 됨 */}
-            {produtes && <p>{produtes.length}</p>}
+            {produtes && (
+                <p className='w-6 h-6 text-center bg-brand text-while fond-blod rouded-full absolute -top-1 -rigth-2' >
+                    {produtes.length}
+                </p>
+            )}
         </div>
     )
 }

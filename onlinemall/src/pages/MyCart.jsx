@@ -1,4 +1,7 @@
 import React from 'react';
+import {getCart} from '../api/firebase';
+import {useQuery} from '@tanstack/react-query';
+import {useAuthContext} from '../context/AuthContext';
 
 export default function MyCart() {
   return (
