@@ -10,7 +10,7 @@ export default function MyCart() {
   // useQuery 의 키는 carts, 함수는 getCart에 uid 전달
   const {isLoading, data: produtes} = useQuery(['carts'], () => getCart(uid));
 
-  // 만약에 isLoading이라면 바로 rturn 
+  // 만약에 isLoading이라면 바로 return 
   if(isLoading)return <p>Loading</p>;
 
   // 로딩이 아닌 경우
