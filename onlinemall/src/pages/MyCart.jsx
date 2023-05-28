@@ -3,6 +3,7 @@ import {getCart} from '../api/firebase';
 import {useQuery} from '@tanstack/react-query';
 import {useAuthContext} from '../context/AuthContext';
 import CartItem from '../components/CartItem';
+import PriceCard from '../components/PriceCard';
 
 export default function MyCart() {
   // 사용자안에 있는 uid
@@ -21,6 +22,10 @@ export default function MyCart() {
   // hasProducts == 제품이 있는지 검사
   const hasProducts = products && products.length > 0;
 
+  // 가격 총액
+  // totalPrice가 products에 있다면 reduce를 통해서 가격을 더 해줌
+  const totalPrice = products && products.reduce({})
+  // products.reduce({prev, current} => prev + parseInt())
   return (
     // 로그인 후 장바구니 버튼 누르면
     <section>
@@ -37,6 +42,10 @@ export default function MyCart() {
               <CartItem key={product.id} product={product} />
             ))}
           </ul>
+          {/* 상품 총 가격 */}
+          <div>
+            <PriceCard text='상품 총액' price={totalPrice} />
+          </div>
         </>
       )}  
     </section>
