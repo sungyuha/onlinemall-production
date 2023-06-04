@@ -4,6 +4,8 @@ import {useQuery} from '@tanstack/react-query';
 import {useAuthContext} from '../context/AuthContext';
 import CartItem from '../components/CartItem';
 import PriceCard from '../components/PriceCard';
+import {BsFillPlusCircleFill} from 'react-icons/bs';
+import {FaEquals} from 'react-icons/fa';
 
 export default function MyCart() {
   // 사용자안에 있는 uid
@@ -23,9 +25,9 @@ export default function MyCart() {
   const hasProducts = products && products.length > 0;
 
   // 가격 총액
-  // totalPrice가 products에 있다면 reduce를 통해서 가격을 더 해줌
-  const totalPrice = products && products.reduce({})
-  // products.reduce({prev, current} => prev + parseInt())
+  // totalPrice가 products에 있다면 reduce를 통해서 가격을 더 해줌. 가격만 더하는게 아니고 장바구니에 동일한 제품이 2개 이상 있을 수 있으니 quantity까지 곱해서 계속 더해줌
+  const totalPrice = products && products.reduce((prev, currnet) => prev + parseInt(currnet.price) * currnet.quantity, 0);
+  
   return (
     // 로그인 후 장바구니 버튼 누르면
     <section>
@@ -45,6 +47,9 @@ export default function MyCart() {
           {/* 상품 총 가격 */}
           <div>
             <PriceCard text='상품 총액' price={totalPrice} />
+            <BsFillPlusCircleFill />
+            <PriceCard text='배송액' price={3000} />
+            <FaEquals />
           </div>
         </>
       )}  
