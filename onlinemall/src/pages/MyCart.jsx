@@ -7,6 +7,8 @@ import PriceCard from '../components/PriceCard';
 import {BsFillPlusCircleFill} from 'react-icons/bs';
 import {FaEquals} from 'react-icons/fa';
 
+const SHIPPING = 3000; // 배송비
+
 export default function MyCart() {
   // 사용자안에 있는 uid
   const {uid} = useAuthContext();
@@ -48,8 +50,8 @@ export default function MyCart() {
           <div>
             <PriceCard text='상품 총액' price={totalPrice} />
             <BsFillPlusCircleFill />
-            <PriceCard text='배송액' price={3000} />
-            <FaEquals />
+            <PriceCard text='배송액' price={SHIPPING} /> {/* SHIPPING은 배송비 변수 */}
+            <FaEquals test='총 가격' price={totalPrice + SHIPPING} />
           </div>
         </>
       )}  
