@@ -43,7 +43,7 @@ export default function MyCart() {
             {/* 모든 제품의 정보를 보여줌 */}
             {/* products이 있다면 products을 map할건데 각 각의 제품을 CartItem 으로 만들어서 보여줌 */}
             {products && products.map((product) => (
-              <CartItem key={product.id} product={product} />
+              <CartItem key={product.id} product={product} uid={uid} /> /* CartIte에 uid를 props으로 전달 함 */
             ))}
           </ul>
           {/* 상품 총 가격 */}

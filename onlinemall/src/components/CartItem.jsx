@@ -1,7 +1,7 @@
 import React from "react";
 import {AiOutlinePlusSquare, AiOutlineMinusSquare} from 'react-icons/ai';
 import {RiDeleteBin5Fill} from 'react-icons/ri';
-import { addOrUpdateToCart } from "../api/firebase";
+import { addOrUpdateToCart, removeFromCart } from "../api/firebase";
 
 export default function CartItem({
     product, product: {id, image, title, option, quantity, price},
@@ -12,14 +12,15 @@ export default function CartItem({
     const handleMinus = () => {
         // 1개만 있을 때 
         if(quantity <2) return;
-        // 1개 이상인 경우
-        addOrUpdateToCart(); // firebase에 만들어둔 api
+        // 1개 이상인 경우 // firebase에 만들어둔 api //사용하려면 uid를 전달 받아야 함. MyCart에서 props으로 전달 받음
+        addOrUpdateToCart(uid, {...product, quantity: quantity - 1 }); // 사용자의 제품을 업데이트
     }
     const handlePlus = () => {
-
+        addOrUpdateToCart(uid, {...product, quantity: quantity + 1 });
     }
     const handleDelte = () => {
-
+        // 삭제 할 제품 호출
+        removeFromCart(uid, id);
     }
 
     return (
