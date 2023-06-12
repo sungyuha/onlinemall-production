@@ -3,14 +3,17 @@ import {AiOutlinePlusSquare, AiOutlineMinusSquare} from 'react-icons/ai';
 import {RiDeleteBin5Fill} from 'react-icons/ri';
 import { addOrUpdateToCart } from "../api/firebase";
 
-export default function CartItem({product, product: {id, image, title, option, quantity, price}}) {
+export default function CartItem({
+    product, product: {id, image, title, option, quantity, price},
+    uid,
+}) {
     
     // 함수가 호출이 되면 
     const handleMinus = () => {
         // 1개만 있을 때 
         if(quantity <2) return;
         // 1개 이상인 경우
-        addOrUpdateToCart()
+        addOrUpdateToCart(); // firebase에 만들어둔 api
     }
     const handlePlus = () => {
 
