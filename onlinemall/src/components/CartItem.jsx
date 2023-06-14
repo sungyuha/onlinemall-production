@@ -16,6 +16,7 @@ export default function CartItem({
         addOrUpdateToCart(uid, {...product, quantity: quantity - 1 }); // 사용자의 제품을 업데이트
     }
     const handlePlus = () => {
+        // 제품 업데이트 되는데 quantity만 변경 // 가지고 있는 quantity에서 플러스 1을 해줘
         addOrUpdateToCart(uid, {...product, quantity: quantity + 1 });
     }
     const handleDelte = () => {
@@ -24,7 +25,7 @@ export default function CartItem({
     }
 
     return (
-        <li>
+        <li className='flex justify-between'>
             {/* 처음에는 상품 이미지 */}
             <img src={image} alt={title} />
             {/* 상품 정보 */}
