@@ -25,14 +25,17 @@ export default function CartItem({
     }
 
     return (
-        <li className='flex justify-between'>
+        <li className='flex justify-between my-2 items-center'>
             {/* 처음에는 상품 이미지 */}
-            <img src={image} alt={title} />
+            <img className='w-24 md:w-48 rounded-lg' src={image} alt={title} />
             {/* 상품 정보 */}
-            <div>
-                <p>{title}</p>
-                <p>{option}</p>
-                <div>
+            <div className='flex-1 flex justify-between ml-4'>
+                <div className='basis-3/5'>
+                    <p className='text-lg'>{title}</p>
+                    <p className='text-xl font-bold text-brand'>{option}</p>
+                    <p>₩{price}</p>
+                </div>
+                <div className='text-2xl flex items-center'>
                     {/* 수량 아이콘 */}
                     <AiOutlineMinusSquare onClick={handleMinus} /> {/* 마이너스 */}
                     <span>{quantity}</span>
