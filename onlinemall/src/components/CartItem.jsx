@@ -3,6 +3,8 @@ import {AiOutlinePlusSquare, AiOutlineMinusSquare} from 'react-icons/ai';
 import {RiDeleteBin5Fill} from 'react-icons/ri';
 import { addOrUpdateToCart, removeFromCart } from "../api/firebase";
 
+// 유지보수 하기 편하게. 상수로 값을 넣은 클래스로 만들기
+const ICON_CLASS = 'transition-all cursor-pointer hover:text-brand hover:scale-105 mx-1';
 export default function CartItem({
     product, product: {id, image, title, option, quantity, price},
     uid,
@@ -37,10 +39,10 @@ export default function CartItem({
                 </div>
                 <div className='text-2xl flex items-center'>
                     {/* 수량 아이콘 */}
-                    <AiOutlineMinusSquare onClick={handleMinus} /> {/* 마이너스 */}
+                    <AiOutlineMinusSquare className={ICON_CLASS} onClick={handleMinus} /> {/* 마이너스 */}
                     <span>{quantity}</span>
-                    <AiOutlinePlusSquare onClick={handlePlus} /> {/* 플러스 */}
-                    <RiDeleteBin5Fill onClick={handleDelte} /> {/* 삭제 */}
+                    <AiOutlinePlusSquare className={ICON_CLASS} onClick={handlePlus} /> {/* 플러스 */}
+                    <RiDeleteBin5Fill className={ICON_CLASS} onClick={handleDelte} /> {/* 삭제 */}
                 </div>
             </div>
         </li>
