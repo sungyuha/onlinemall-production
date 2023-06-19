@@ -37,12 +37,12 @@ export function login() {
     return user;
     // 에러가 발생할 때
     }).catch(console.error); */
-}
+};
 
 // 로그아웃
 export function logout() {
     signOut(auth).catch(console.error);
-}
+};
 
 // 특정한 컴포넌트에서 사용자가 로그인 했을 때, 사용자의 정보가 변경 되었을 때
 export function onUserStateChange(callback) {
@@ -53,7 +53,7 @@ export function onUserStateChange(callback) {
         // console.log(user);
         callback(updatedUser);
     });
-}
+};
 
 // 어드민유저라는 함수를 만들어서 인자인 user를 전달 받음
 async function adminUser(user) {
@@ -75,7 +75,7 @@ async function adminUser(user) {
         }
         return user;
     });
-}
+};
 
 // 제품 등록
 export async function addNewProduct(product, imageUrl){ // async 붙여서 비동기로, product으로 제품의 정보 받아오고, imageUrl를 인자로 받아옴
@@ -92,7 +92,7 @@ export async function addNewProduct(product, imageUrl){ // async 붙여서 비�
         // 배열 형태로 저장
         options: product.options.split(','),
     });
-}
+};
 
 // 상품 불러오기(조회)
 export async function getProducts() {
@@ -106,7 +106,7 @@ export async function getProducts() {
         // snapshot이 없다면 빈 배열을 리턴해줌
         return [];
     });
-}
+};
 
 // 사용자에 대한 카트(장바구니)
 export async function getCart(userId) {
@@ -117,16 +117,16 @@ export async function getCart(userId) {
         const items = snapshot.val() || {};
         return Object.values(items);
     });
-}
+};
 
 // 장바구니에 추가 & 변경할 때
 export async function addOrUpdateToCart(userId, product) { // product에는 제품의 가격 & 카트에 추가하는 수량 정보가 들어있음
     // carts안에 사용자의 아이디 == userId
     return set(ref(database, `carts/${userId}/${product.id}`), product);
-}
+};
 
 // 카드에 담긴 정보 삭제
 export async function removeFromCart(userId, productId) {
     // productId은 제품 아이디
     return remove(ref(database, `carts/${userId}/${productId}`));
-}
+};

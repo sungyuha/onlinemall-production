@@ -46,5 +46,5 @@ export default function CartItem({
                 </div>
             </div>
         </li>
-    )
-}
+    );
+};
