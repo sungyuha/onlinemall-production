@@ -39,7 +39,7 @@ export default function MyCart() {
       {/* 장바구니 안에 상품이 있다면 */}
       {hasProducts && ( 
         <>
-          <ul>
+          <ul className='border-gray-300 mb-8 p-4 px-8'>
             {/* 모든 제품의 정보를 보여줌 */}
             {/* products이 있다면 products을 map할건데 각 각의 제품을 CartItem 으로 만들어서 보여줌 */}
             {products && products.map((product) => (
@@ -47,7 +47,7 @@ export default function MyCart() {
             ))}
           </ul>
           {/* 상품 총 가격 */}
-          <div>
+          <div className='flex justify-between items-center mb-5 px-2 md:px-8 lg:px-16'>
             <PriceCard text='상품 총액' price={totalPrice} />
             <BsFillPlusCircleFill />
             <PriceCard text='배송액' price={SHIPPING} /> {/* SHIPPING은 배송비 변수 */}
