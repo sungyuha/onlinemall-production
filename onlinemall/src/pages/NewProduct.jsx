@@ -11,7 +11,7 @@ export default function NewProduct() {
   // image 상태값
   const [file, setFile] = useState();
   // 업로드중인지 확인
-  const [isUploading, setISUploading] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   // 업로드 업로드 성공했을 때 메시지 전송
   const [success, setSuccess] = useState();
 
@@ -19,13 +19,13 @@ export default function NewProduct() {
 
   // useMutation를 사용하려면 콜백함수를 만들어줘야 함
 
-  const addProuct = useMutation(
+  const addProduct = useMutation(
     // product, url를 낱개로 인자로 전달 해줌
     // addNewProduct(product, url)으로 전달 받음
     ({product, url}) => addNewProduct(product, url),
     {
     // Mutation의 업데이트가 성공하면
-    onSuccess: () => queryClient.invalidateQueries(['proudcts']), // ['proudcts']이라는 key
+    onSuccess: () => queryClient.invalidateQueries(['products']), // ['proudcts']이라는 key
     }
   );
 
@@ -43,32 +43,42 @@ export default function NewProduct() {
   // onSubmit 버튼을 누르면
   const handleChange = (e) => {
     e.preventDefault();
-    setISUploading(true);
+    setIsUploading(true);
 
     // Submit이 되었을 때
     // 선택한 파일을 먼저 업로드 한 다음에 
-    uploadImage(file) // 
+    uploadImage(file) //
     // url 전달
-    .then(url => {
-      // 새로운 제품 등록
+    .then((url) => {
+      addProduct.mutate(
+        { product, url },
+        {
+          onSuccess: () => {
+            // 성공한 결과 값 - 문구
+            setSuccess('성공적으로 제품이 추가되었습니다.');
+            setTimeout(() => {
+              // 일정시간이 지나면 setSuccess를 null 값으로 초기회 - 4초
+              setSuccess(null);
+            }, 4000);
+          },
+        }
+      );
+    })
+    // 업로드가 완료되면 실패or성공해도
+    .finally(() => setIsUploading(false));
+  };
+
+    /* 
+    // 새로운 제품 등록
       console.log(url);
       // Firebase에 새로운 제품 데이터 저장(+추가)
       addNewProduct(product, url) // addNewProduct 호출해줌
       // addNewProduct이 성공이게 된다면
       .then(() => {
-        // 성공한 결과 값 - 문구
-        setSuccess('성공적으로 제품이 추가되었습니다.');
-        setTimeout(() => {
-          // 일정시간이 지나면 setSuccess를 null 값으로 초기회 - 4초
-          setSuccess(null);
-        }, 4000);
-        });
       
       //제품의 사진을 Cloudinary에 업로드 하고 URL 정보
     })
-    // 업로드가 완료되면 실패or성공해도
-    .finally(() => setISUploading(false));
-  };
+    */
 
   return (
     <section className='w-full text-center'>
