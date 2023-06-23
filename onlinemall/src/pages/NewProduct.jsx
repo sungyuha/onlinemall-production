@@ -18,7 +18,6 @@ export default function NewProduct() {
   const queryClient = useQueryClient();
 
   // useMutation를 사용하려면 콜백함수를 만들어줘야 함
-
   const addProduct = useMutation(
     // product, url를 낱개로 인자로 전달 해줌
     // addNewProduct(product, url)으로 전달 받음

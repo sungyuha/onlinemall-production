@@ -10,7 +10,7 @@ export default function Products() {
         data: products,
         // useQuery로 key와 콜백함수 전달. 인자와 호출하는게 동일하므로 getProducts의 참조값만 전달해줌
         // 캐싱 key 값은 'products'
-    } = useQuery(['products'], getProducts);
+    } = useQuery(['products'], getProducts, {staleTime: 1000 * 60}); // 1분
 
     return <>
         {/* 로딩중이면 */}
