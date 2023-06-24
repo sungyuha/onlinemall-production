@@ -13,6 +13,6 @@ function App() {
     </AuthContextProvider>
     </QueryClientProvider>
   );
-}
+};
 
 export default App;

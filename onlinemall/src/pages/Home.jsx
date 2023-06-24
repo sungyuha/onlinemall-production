@@ -8,5 +8,5 @@ export default function Home() {
       {/* 상품 조회 화면 */}
       {/* <Products /> */}
     </>
-  )
+  );
 }

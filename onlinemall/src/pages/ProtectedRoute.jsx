@@ -24,4 +24,4 @@ export default function ProtectedRoute(children, requireAdmin) {
       ProtectedRoute
     </div>
   );*/
-}
+};

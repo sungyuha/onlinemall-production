@@ -26,5 +26,5 @@ export default function ProductCard({
             </div>
             <p className='mb-2 px-2 text-gray-600'>{category}</p>
         </li>
-    )
+    );
 }
