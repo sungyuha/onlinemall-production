@@ -24,7 +24,7 @@ export default function NewProduct() {
     ({product, url}) => addNewProduct(product, url),
     {
     // Mutation의 업데이트가 성공하면
-    onSuccess: () => queryClient.invalidateQueries(['products']), // ['proudcts']이라는 key
+    onSuccess: () => queryClient.invalidateQueries(['products']), // ['proudcts']이라는 key를 가진 캐시
     }
   );
 
