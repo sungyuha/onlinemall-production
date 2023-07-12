@@ -16,7 +16,7 @@ export default function CartStatus() {
             <AiOutlineShoppingCart className='text-4xl'/>
             {/* produtes이 있다면 p태그 안에 produtes.length가 출력 됨 */}
             {produtes && (
-                <p className='w-6 h-6 text-center bg-brand text-while fond-blod rouded-full absolute -top-1 -rigth-2' >
+                <p className='w-6 h-6 text-center bg-brand text-white fond-blod rounded-full absolute -top-1 -right-2' >
                     {produtes.length}
                 </p>
             )}

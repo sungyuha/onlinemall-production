@@ -21,8 +21,8 @@ export default function Navbar() {
       </Link>
       <nav className='flex items-center gap-4 font-semiblod'>
         <Link to='/products'>Products</Link>
-        {/* 사용자가 있으면(=로그인 했을 때) 쇼핑카트 생성 */}
-        {user && <Link to='/carts'>Carts<CartStatus/></Link> }
+        {/* 사용자가 있으면(=로그인 했을 때) 쇼핑카트 생성. 쇼핑 카트 아이콘 보여짐 */}
+        {user && <Link to='/carts'><CartStatus/></Link> }
         {/* 어드민 사용자이면 편집 아이콘 보여지기 */}
         {user && user.isAdmin && (
           <Link to='/products/new' className='text-2xl'>
