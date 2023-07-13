@@ -32,8 +32,8 @@ export default function MyCart() {
   
   return (
     // 로그인 후 장바구니 버튼 누르면
-    <section>
-      <p>내 장바구니</p>
+    <section className='p-8 flex flex-col'>
+      <p className='text-2xl text-center font-bold pb-4 border-b border-gray-300'>내 장바구니</p>
       {/* 장바구니 안에 아무것도 담겨 있지 않다면 */}
       {!hasProducts && <p>장바구니에 상품이 없습니다.</p>}
       {/* 장바구니 안에 상품이 있다면 */}
