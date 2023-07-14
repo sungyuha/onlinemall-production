@@ -17,7 +17,7 @@ export default function MyCart() {
   const {isLoading, data: products} = useQuery(['carts'], () => getCart(uid));
 
   // 만약에 isLoading이라면 바로 return 
-  if(isLoading) 
+  if(isLoading)
     return (
       <p>Loading</p>
     );
