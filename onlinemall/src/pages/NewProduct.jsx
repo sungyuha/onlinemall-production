@@ -90,7 +90,7 @@ export default function NewProduct() {
         <input className='p-4 online-none border border-gray-300 my-1' type='file' accept='image/*' name='file' required onChange={handleChange} />
         <input className='p-4 online-none border border-gray-300 my-1' type='text' name='file' value={product.title ?? ''} placeholder='제품명' required onChange={handleChange} />
         <input className='p-4 online-none border border-gray-300 my-1' type='text' name='file' value={product.price ?? ''} placeholder='가격' required onChange={handleChange} />
-        <input className='p-4 online-none border border-gray-300 my-1' type='text' name='file' value={product.category ?? ''} placeholder='' required onChange={handleChange} />
+        <input className='p-4 online-none border border-gray-300 my-1' type='text' name='file' value={product.category ?? ''} placeholder='카테고리 ' required onChange={handleChange} />
         {/* title이 없다면 '' 텅 빈 문자열 */}
         <input className='p-4 online-none border border-gray-300 my-1' type='text' name='title' value={product.options ?? ''} placeholder='옵션들(콤마(,)로 구분)' required onChange={handleChange} />
         {/* 업로드 중이면 버튼 비활섷롸(=disabled) */}
