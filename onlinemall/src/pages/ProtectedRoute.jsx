@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import {useAuthContext} from '../context/AuthContext';
 
-export default function ProtectedRoute(children, requireAdmin) {
+export default function ProtectedRoute({children, requireAdmin}) {
   // 로그인 한 사용자가 있는지 확인
   const { user } = useAuthContext();
 

@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         path: '/products/new',
         element: (
           // 어드민인 사용자가 접속할 때
-          // 사용자가 어드민이라면 접속, 아니라면  홈으로 리디렉딩
+          // 사용자가 어드민이라면 접속, 아니라면 홈으로 리디렉딩
           <ProtectedRoute requireAdmin>
             <NewProduct />
           </ProtectedRoute>
