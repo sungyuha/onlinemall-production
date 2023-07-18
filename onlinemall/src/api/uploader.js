@@ -11,8 +11,8 @@ export async function uploadImage(file) {
         method: 'post',
         // NewProduct 폼 데이터
         body: data
-        // 결과(res)가 받아와지면 res를 json으로 변환, 그리고 데이터 url를 리턴해줌
     })
+    // 결과(res)가 받아와지면 res를 json으로 변환, 그리고 데이터 url를 리턴해줌
     .then(res => res.json()
     .then(data => data.url));
 }
