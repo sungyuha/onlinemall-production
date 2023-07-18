@@ -3,7 +3,7 @@ import { uploadImage } from '../api/uploader';
 import { addNewProduct } from '../api/firebase';
 import Button from '../components/UI/Button';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-// import '../index.css';
+import '../index.css';
 
 export default function NewProduct() {
 
@@ -87,10 +87,11 @@ export default function NewProduct() {
       {/* 파일이 있다면 선택 된 URL을 file에 전달 */}
       {file && <img className='w-96 mx-auto mb-2' src={URL.createObjectURL(file)} alt='파일' />}
       <form className='flex flex-col px-12' onSubmit={handleSubmit}>
-        <input className='p-4 online-none border border-gray-300 my-1' type='file' accept='image/*' name='file' required onChange={handleChange} />
-        <input className='p-4 online-none border border-gray-300 my-1' type='text' name='file' value={product.title ?? ''} placeholder='제품명' required onChange={handleChange} />
-        <input className='p-4 online-none border border-gray-300 my-1' type='text' name='file' value={product.price ?? ''} placeholder='가격' required onChange={handleChange} />
-        <input className='p-4 online-none border border-gray-300 my-1' type='text' name='file' value={product.category ?? ''} placeholder='카테고리 ' required onChange={handleChange} />
+        {/* index.css에 input 태그에 대한 css 설정 해둠 */}
+        <input type='file' accept='image/*' name='file' required onChange={handleChange} />
+        <input type='text' name='file' value={product.title ?? ''} placeholder='제품명' required onChange={handleChange} />
+        <input type='text' name='file' value={product.price ?? ''} placeholder='가격' required onChange={handleChange} />
+        <input type='text' name='file' value={product.category ?? ''} placeholder='카테고리 ' required onChange={handleChange} />
         {/* title이 없다면 '' 텅 빈 문자열 */}
         <input className='p-4 online-none border border-gray-300 my-1' type='text' name='title' value={product.options ?? ''} placeholder='옵션들(콤마(,)로 구분)' required onChange={handleChange} />
         {/* 업로드 중이면 버튼 비활섷롸(=disabled) */}
