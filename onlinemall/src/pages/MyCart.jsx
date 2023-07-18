@@ -47,11 +47,12 @@ export default function MyCart() {
             ))}
           </ul>
           {/* 상품 총 가격 */}
-          <div className='flex justify-between items-center mb-5 px-2 md:px-8 lg:px-16'>
+          <div className='flex justify-between items-center px-2 md:px-8 lg:px-16'>
             <PriceCard text='상품 총액' price={totalPrice} />
-            <BsFillPlusCircleFill />
+            <BsFillPlusCircleFill className='shrink-0' />
             <PriceCard text='배송액' price={SHIPPING} /> {/* SHIPPING은 배송비 변수 */}
-            <FaEquals test='총 가격' price={totalPrice + SHIPPING} />
+            <FaEquals />
+            <PriceCard text='총 가격' price={totalPrice + SHIPPING} />
           </div>
         </>
       )}  
