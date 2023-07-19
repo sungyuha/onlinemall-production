@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import { uploadImage } from '../api/uploader';
-import { addNewProduct } from '../api/firebase';
+//import { addNewProduct } from '../api/firebase';
 import Button from '../components/UI/Button';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+//import { useMutation, useQueryClient } from '@tanstack/react-query';
 import '../index.css';
+import useProducts from '../hooks/useProducts';
 
 export default function NewProduct() {
 
@@ -15,9 +16,9 @@ export default function NewProduct() {
   // 업로드 업로드 성공했을 때 메시지 전송
   const [success, setSuccess] = useState();
 
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
-  // useMutation를 사용하려면 콜백함수를 만들어줘야 함
+  /* // useMutation를 사용하려면 콜백함수를 만들어줘야 함
   const addProduct = useMutation(
     // product, url를 낱개로 인자로 전달 해줌
     // addNewProduct(product, url)으로 전달 받음
@@ -26,7 +27,9 @@ export default function NewProduct() {
     // Mutation의 업데이트가 성공하면
     onSuccess: () => queryClient.invalidateQueries(['products']), // ['proudcts']이라는 key를 가진 캐시
     }
-  );
+  ); */
+
+  const {addProduct} = useProducts();
 
   const handleSubmit = (e) => {
     const {name, value, files} = e.target;
@@ -50,6 +53,7 @@ export default function NewProduct() {
     // url 전달
     .then((url) => {
       addProduct.mutate(
+        // 인자로 전달
         { product, url },
         {
           onSuccess: () => {
