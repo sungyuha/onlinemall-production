@@ -29,6 +29,7 @@ export default function NewProduct() {
     }
   ); */
 
+  // useMutation를 받아올
   const {addProduct} = useProducts();
 
   const handleSubmit = (e) => {
@@ -52,6 +53,7 @@ export default function NewProduct() {
     uploadImage(file) //
     // url 전달
     .then((url) => {
+      // mutate가 성공적으로 전달되면
       addProduct.mutate(
         // 인자로 전달
         { product, url },

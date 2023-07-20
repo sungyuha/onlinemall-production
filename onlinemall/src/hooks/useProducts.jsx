@@ -18,6 +18,7 @@ export default function useProducts() {
         ({product, url}) => addNewProduct(product, url),
         {
             // Mutation의 업데이트가 성공하면
+            // 호출한 콜백함수도 호출 됨
             onSuccess: () => queryClient.invalidateQueries(['products']), // ['proudcts']이라는 key를 가진 캐시
         }
     );
