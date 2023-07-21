@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCart } from '../api/firebase';
 import { useAuthContext } from "../context/AuthContext";
 
@@ -16,9 +16,11 @@ export default function useCart() {
         enabled: !!uid,
     });
 
+    const addOrUpdareItem = useMutation();
+
     return (
         <div>
-
+            {/* 장바구니 관련 firebase 처리 모아놓은 useCart */}
         </div>
     );
 };
