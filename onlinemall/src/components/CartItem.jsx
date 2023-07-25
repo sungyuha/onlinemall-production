@@ -10,7 +10,6 @@ export default function CartItem({
     product, product: {id, image, title, option, quantity, price},
     //uid,
 }) {
-    
     // 함수가 호출이 되면 
     const handleMinus = () => {
         // 1개만 있을 때 

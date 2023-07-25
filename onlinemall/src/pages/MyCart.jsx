@@ -1,20 +1,26 @@
 import React from 'react';
-import {getCart} from '../api/firebase';
-import {useQuery} from '@tanstack/react-query';
-import {useAuthContext} from '../context/AuthContext';
+// import {getCart} from '../api/firebase';
+// import {useQuery} from '@tanstack/react-query';
+//import {useAuthContext} from '../context/AuthContext';
 import CartItem from '../components/CartItem';
 import PriceCard from '../components/PriceCard';
 import {BsFillPlusCircleFill} from 'react-icons/bs';
 import {FaEquals} from 'react-icons/fa';
+import useCart from '../hooks/useCart';
 
 const SHIPPING = 3000; // 배송비
 
 export default function MyCart() {
   // 사용자안에 있는 uid
-  const {uid} = useAuthContext();
+  //const {uid} = useAuthContext();
+
+  // 커스텀훅을 사용. cartQuery안에 데이터를 받음
+  const {
+    cartQuery: {isLoading, data: products},
+  } = useCart();
 
   // useQuery 의 키는 carts, 함수는 getCart에 uid 전달
-  const {isLoading, data: products} = useQuery(['carts'], () => getCart(uid));
+  // const {isLoading, data: products} = useQuery(['carts'], () => getCart(uid));
 
   // 만약에 isLoading이라면 바로 return 
   if(isLoading)
