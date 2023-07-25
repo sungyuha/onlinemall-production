@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getCart } from '../api/firebase';
+import { addOrUpdateToCart, getCart, removeFromCart } from '../api/firebase';
 import { useAuthContext } from "../context/AuthContext";
 
 export default function useCart() {
@@ -12,15 +12,28 @@ export default function useCart() {
     2) carts 인데 사용자별로 캐싱이 이루어지도록 uid 설정
     3) 그런데 사용자가 로그인을 하지 않으면 쿼리가 실행되지 않도록 enabled 옵션 사용
     */
-    const caryQuery = useQuery(['carts', uid || ''], () => getCart(uid), {
+    const cartQuery = useQuery(['carts', uid || ''], () => getCart(uid), {
         enabled: !!uid,
     });
 
-    const addOrUpdareItem = useMutation();
-
-    return (
-        <div>
-            {/* 장바구니 관련 firebase 처리 모아놓은 useCart */}
-        </div>
+    // 중요!! 
+    const addOrUpdateItem = useMutation(
+        // 내부적으로는 firebase에서 제공해주는 함수 사용
+        (product) => addOrUpdateToCart(uid, product),
+        {
+            onSuccess: () => {
+                // 모든 cart의 캐싱을 하는게 아니라 carts이면서 로그인한 사용자 uid가 맞으면 쿼리 무효화하도록
+                queryClient.invalidateQueries(['carts', uid]);
+            },
+        }
     );
+    
+    // 중요!!
+    const removeItem = useMutation((id) => removeFromCart(uid, id), {
+        onSuccess: () => {
+            queryClient.invalidateQueries(['carts', uid]);
+        },
+    });
+
+    return { cartQuery, addOrUpdateItem, removeItem };
 };
