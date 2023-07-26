@@ -1,8 +1,8 @@
 import React from "react";
 import {AiOutlinePlusSquare, AiOutlineMinusSquare} from 'react-icons/ai';
 import {RiDeleteBin5Fill} from 'react-icons/ri';
-// import useCart from "../hooks/useCart";
-import { addOrUpdateToCart, removeFromCart } from "../api/firebase";
+import useCart from "../hooks/useCart";
+// import { addOrUpdateToCart, removeFromCart } from "../api/firebase";
 
 // 유지보수 하기 편하게. 상수로 값을 넣은 클래스로 만들기
 const ICON_CLASS = 'transition-all cursor-pointer hover:text-brand hover:scale-105 mx-1';
@@ -10,23 +10,25 @@ export default function CartItem({
     product, product: {id, image, title, option, quantity, price},
     //uid,
 }) {
+    // 커스텀훅에 있는 데이터 가져오기
+    const {addOrUpdateItem, removeItem} = useCart(); // 
     // 함수가 호출이 되면 
     const handleMinus = () => {
         // 1개만 있을 때 
         if(quantity <2) return;
         // 1개 이상인 경우 // firebase에 만들어둔 api //사용하려면 uid를 전달 받아야 함. MyCart에서 props으로 전달 받음
         //addOrUpdateToCart(uid, {...product, quantity: quantity - 1 }); // 사용자의 제품을 업데이트
-        addOrUpdateToCart.mutate({...product, quantity: quantity - 1 }); // 진행중!
+        addOrUpdateItem.mutate({...product, quantity: quantity - 1 });
     };
     const handlePlus = () => {
         // 제품 업데이트 되는데 quantity만 변경 // 가지고 있는 quantity에서 플러스 1을 해줘
         //addOrUpdateToCart(uid, {...product, quantity: quantity + 1 });
-        addOrUpdateToCart.mutate({...product, quantity: quantity + 1 }); // 진행중!
+        addOrUpdateItem.mutate({...product, quantity: quantity + 1 });
     };
     const handleDelte = () => {
         // 삭제 할 제품 호출
         //removeFromCart(uid, id);
-        removeFromCart.mutate(id);
+        removeItem.mutate(id);
     };
 
     return (

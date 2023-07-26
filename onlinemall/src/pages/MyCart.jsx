@@ -14,8 +14,9 @@ export default function MyCart() {
   // 사용자안에 있는 uid
   //const {uid} = useAuthContext();
 
-  // 커스텀훅을 사용. cartQuery안에 데이터를 받음
+  // 커스텀훅을 사용
   const {
+    // cartQuery안에 데이터를 받음
     cartQuery: {isLoading, data: products},
   } = useCart();
 
