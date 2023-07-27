@@ -1,12 +1,14 @@
 import React,{useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../components/UI/Button';
-import {useAuthContext} from '../context/AuthContext';
-import { addOrUpdateToCart } from '../api/firebase';
+//import {useAuthContext} from '../context/AuthContext';
+import useCart from '../hooks/useCart';
 
 export default function ProductDetail() {
   // 사용자안에 있는 uid
-  const {uid} = useAuthContext();
+  // const {uid} = useAuthContext();
+  // useCart를 통해서 받아옴
+  const {addOrUpdateItem} = useCart();
   const {
     // 전달 받은 state를 react-router-dom에서 product으로 낱개로 풀어서 가져옴
     state: {
@@ -25,8 +27,10 @@ export default function ProductDetail() {
     // 장바구니에 추가
     // 장바구니에 추가할 정보 들 중  옵션은 배열이 아닌 선택 된 // quantity는 수량 
     const product = {id, image, title, price, option: selected, quantity: 1};
+    // 그래야 캐시가 업데이트
+    addOrUpdateItem.mutate(product);
     // firebase에서 호출
-    addOrUpdateToCart(uid, product);
+    // addOrUpdateToCart(uid, product);
   };
 
   return (
