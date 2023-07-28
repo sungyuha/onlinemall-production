@@ -16,6 +16,9 @@ export default function ProductDetail() {
     }
   } = useLocation(); // useLocation를 통해서 받아올 수 있음
 
+  // 장바구니에 상품 추가할때의 UI
+  const [success, setSuccess] = useState();
+
   // 옵션이 있다면 제일 첫 번째 값을 선택
   const [selected, setSelected] = useState(options && options[0]);
 
@@ -28,7 +31,15 @@ export default function ProductDetail() {
     // 장바구니에 추가할 정보 들 중  옵션은 배열이 아닌 선택 된 // quantity는 수량 
     const product = {id, image, title, price, option: selected, quantity: 1};
     // 그래야 캐시가 업데이트
-    addOrUpdateItem.mutate(product);
+    addOrUpdateItem.mutate(product, {
+      // mutate가 성공적으로 작동되면 onSuccess에 콜백함수
+      onSuccess: () => {
+        // 성공이 잘되었으면
+        setSuccess('장바구니에 상품이 추가되었습니다.')
+        // 3초
+        setTimeout(()=> setSuccess(null), 3000);
+      },
+    });
     // firebase에서 호출
     // addOrUpdateToCart(uid, product);
   };
@@ -58,6 +69,8 @@ export default function ProductDetail() {
                 ))}
             </select>
           </div>
+          {/* success가 true이면  */}
+          {success && <p className='my-2'>✅{success}✅</p>}
           {/* 장바구나 추가 버튼 */}
           <Button text="장바구니에 추가" onClick={handleClick} />
         </div>
