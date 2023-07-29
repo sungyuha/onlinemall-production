@@ -11,6 +11,7 @@ export default function useCart() {
     1) Cart를 읽어오는건 caryQuery로 useQuery 사용
     2) carts 인데 사용자별로 캐싱이 이루어지도록 uid 설정
     3) 그런데 사용자가 로그인을 하지 않으면 쿼리가 실행되지 않도록 enabled 옵션 사용
+    4) uid가 존재해야지 api 정상 작동
     */
     const cartQuery = useQuery(['carts', uid || ''], () => getCart(uid), {
         enabled: !!uid,
@@ -29,7 +30,7 @@ export default function useCart() {
     );
     
     // 중요!!
-    const removeItem = useMutation((id) => removeFromCart(uid, id), {
+    const removeItem = useMutation((id) => removeFromCart(uid, id), { // firebase
         onSuccess: () => {
             queryClient.invalidateQueries(['carts', uid]);
         },
