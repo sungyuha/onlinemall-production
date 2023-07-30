@@ -1,8 +1,5 @@
 import React from "react";
 import {AiOutlineShoppingCart} from 'react-icons/ai';
-//import {getCart} from '../api/firebase';
-//import {useQuery} from '@tanstack/react-query';
-//import {useAuthContext} from '../context/AuthContext';
 import useCart from '../hooks/useCart';
 
 export default function CartStatus() {
