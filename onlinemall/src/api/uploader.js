@@ -8,7 +8,7 @@ export async function uploadImage(file) {
     // URL
     return fetch(process.env.REACT_APP_CLOUDINARY_URL, {
         // 데이터 전달
-        method: 'post',
+        method: 'POST',
         // NewProduct 폼 데이터
         body: data
     })

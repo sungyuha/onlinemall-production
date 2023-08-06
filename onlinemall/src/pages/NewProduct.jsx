@@ -100,7 +100,7 @@ export default function NewProduct() {
         <input type='text' name='file' value={product.category ?? ''} placeholder='카테고리 ' required onChange={handleChange} />
         {/* title이 없다면 '' 텅 빈 문자열 */}
         <input className='p-4 online-none border border-gray-300 my-1' type='text' name='title' value={product.options ?? ''} placeholder='옵션들(콤마(,)로 구분)' required onChange={handleChange} />
-        {/* 업로드 중이면 버튼 비활섷롸(=disabled) */}
+        {/* 업로드 중이면 버튼 비활성화(=disabled) */}
         <Button text={isUploading ? '업로드중..' : '제품 등록하기'} disabled={isUploading} />
       </form>
     </section>
